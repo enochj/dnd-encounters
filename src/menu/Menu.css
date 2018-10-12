@@ -1,0 +1,10 @@
+.menu, .menu-options, .collapse {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.menu-item {
+  justify-content: space-around;
+  display: flex;
+}

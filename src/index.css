@@ -16,14 +16,3 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-
-.menu, .menu-options, .collapse {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-}
-
-.menu-item {
-  justify-content: space-around;
-  display: flex;
-}
