@@ -1,10 +1,10 @@
-import React from 'react';
-import { Button } from 'react-bootstrap';
-import './Menu.css';
-import Add from '../encounter/Add';
-import View from '../encounter/View';
+import React from 'react'
+import { Button } from 'react-bootstrap'
+import './Menu.css'
+import Add from '../encounter/Add'
+import View from '../encounter/View'
 
-const Menu = () =>
+const Menu = ({encounters}) =>
   <div className="menu">
     <Button
       data-toggle="collapse"
@@ -31,7 +31,7 @@ const Menu = () =>
           View an Encounter
         </Button>
         <div id="encounter-view-collapse" className="collapse">
-          <View/>
+          <View encounters={encounters}/>
         </div>
       </div>
     </div>

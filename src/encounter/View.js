@@ -3,13 +3,22 @@ import { Button } from 'react-bootstrap';
 import './View.css';
 
 class View extends Component {
+  constructor(props) {
+    super(props);
+  }
   render() {
     return <div>
-      <div>Name: Encounter1</div>
-      <div>Lighting: Full</div>
-      <div>Terrain: Open</div>
-      <Button>Edit</Button>
-      <Button>Delete</Button>
+      {this.props.encounters.map((item) => {
+        return (
+          <div key={item.id}>
+            <div>Name: {item.name}</div>
+            <div>Lighting: {item.lighting}</div>
+            <div>Terrain: {item.terrain}</div>
+            <Button>Edit</Button>
+            <Button>Delete</Button>
+          </div>
+        )
+      })}
     </div>
   }
 }
