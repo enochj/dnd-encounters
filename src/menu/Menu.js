@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button } from 'react-bootstrap'
 import './Menu.css'
-import Add from '../encounter/Add'
+import Index from '../encounter/Index'
 import View from '../encounter/View'
 
 const Menu = ({encounters}) =>
@@ -19,7 +19,7 @@ const Menu = ({encounters}) =>
           Add an Encounter
         </Button>
         <div id="encounter-add-collapse" className="collapse">
-          <Add/>
+          <View/>
         </div>
         <div className="menu-item">
           Run an Encounter
@@ -28,10 +28,10 @@ const Menu = ({encounters}) =>
           className="menu-item"
           data-toggle="collapse"
           data-target="#encounter-view-collapse">
-          View an Encounter
+          View Encounters
         </Button>
         <div id="encounter-view-collapse" className="collapse">
-          <View encounters={encounters}/>
+          <Index encounters={encounters}/>
         </div>
       </div>
     </div>

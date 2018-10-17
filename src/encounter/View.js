@@ -24,6 +24,8 @@ class View extends Component {
     });
   }
 
+/*TODO: Edit Item*/
+
   deleteItem() {
     const encountersRef = firebase.database()
       .ref(`/encounters/${this.state.id}`);
@@ -81,6 +83,7 @@ class View extends Component {
             onChange={this.handleChange}
             value={this.state.terrain}></input>
         </div>
+      {/*TODO PCs, NPCs, initiative */}
         <Submit
           className="btn"
           type="submit"
