@@ -5,12 +5,12 @@ import './Add.css';
 import firebase from '../firebase.js';
 
 class Add extends Component {
-  constructor() {
+  constructor(item) {
     super();
     this.state = {
-      name: '',
-      lighting: '',
-      terrain: '',
+      name: item? item.name : '',
+      lighting: item? item.lighting: '',
+      terrain: item? item.terrain: '',
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
