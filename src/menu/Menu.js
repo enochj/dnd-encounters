@@ -1,10 +1,12 @@
 import React from 'react'
 import { Button } from 'react-bootstrap'
 import './Menu.css'
-import Index from '../encounter/Index'
-import View from '../encounter/View'
+import Encounters from '../encounter/Encounters'
+import Encounter from '../encounter/Encounter'
+import Character from '../character/Character'
+import Characters from '../character/Characters'
 
-const Menu = ({encounters}) =>
+const Menu = ({encounters, characters}) =>
   <div className="menu">
     <Button
       data-toggle="collapse"
@@ -19,7 +21,7 @@ const Menu = ({encounters}) =>
           Add an Encounter
         </Button>
         <div id="encounter-add-collapse" className="collapse">
-          <View/>
+          <Encounter/>
         </div>
         <div className="menu-item">
           Run an Encounter
@@ -31,7 +33,7 @@ const Menu = ({encounters}) =>
           View Encounters
         </Button>
         <div id="encounter-view-collapse" className="collapse">
-          <Index encounters={encounters}/>
+          <Encounters encounters={encounters}/>
         </div>
       </div>
     </div>
@@ -41,13 +43,22 @@ const Menu = ({encounters}) =>
     <div id="character-collapse" className="collapse">
       <div id="character-options"
         className="menu-options">
-        <div className="menu-item">
+        <Button
+          className="menu-item"
+          data-toggle="collapse"
+          data-target="#character-add-collapse">
           Add a Character
+        </Button>
+        <div id="character-add-collapse" className="collapse">
+          <Character/>
         </div>
-        <div className="menu-item">
-          View a Character
-        </div>
-        <div className="menu-item">
+        <Button className="menu-item"
+          data-toggle="collapse"
+          data-target="#character-view-collapse">
+          View Characters
+        </Button>
+        <div id="character-view-collapse" className="collapse">
+          <Characters characters={characters}/>
           Delete a Character
         </div>
       </div>

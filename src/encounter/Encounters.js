@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import View from './View.js';
+import Encounter from './Encounter.js';
 
-class Index extends Component {
+class Encounters extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -14,7 +14,7 @@ class Index extends Component {
       {this.props.encounters.map((item) => {
         return (
           <div key={item.id}>
-            <View {...item}/>
+            <Encounter {...item}/>
           </div>
         )
       })}
@@ -22,4 +22,4 @@ class Index extends Component {
   }
 }
 
-export default Index;
+export default Encounters;

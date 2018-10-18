@@ -1,17 +1,17 @@
 import React, {Component} from 'react';
-import './View.css';
+import './Character.css';
 import Submit from './Submit.js';
 import $ from 'jquery';
 import firebase from '../firebase.js';
 
-class View extends Component {
+class Character extends Component {
   constructor(props) {
     super(props);
     this.state = {
       id: this.props.id ? this.props.id : null,
       name: this.props.name ? this.props.name : '',
-      lighting: this.props.lighting ? this.props.lighting : '',
-      terrain: this.props.terrain ? this.props.terrain : ''
+      race: this.props.race ? this.props.race : '',
+      class: this.props.class ? this.props.class : ''
     }
     this.handleChange = this.handleChange.bind(this);
     this.deleteItem = this.deleteItem.bind(this);
@@ -27,25 +27,26 @@ class View extends Component {
 /*TODO: Edit Item*/
 
   deleteItem() {
-    const encountersRef = firebase.database()
-      .ref(`/encounters/${this.state.id}`);
-    encountersRef.remove();
+    const charactersRef = firebase.database()
+      .ref(`/characters/${this.state.id}`);
+    charactersRef.remove();
   }
 
   addItem() {
-    const encountersRef = firebase.database().ref('encounters');
+    {/* TODO Check for Duplicate */}
+    const encountersRef = firebase.database().ref('characters');
     const encounter = {
       name: this.state.name,
-      lighting: this.state.lighting,
-      terrain: this.state.terrain
+      race: this.state.race,
+      class: this.state.class
     }
     encountersRef.push(encounter);
     this.setState({
       name: '',
-      lighting: '',
-      terrain: '',
+      race: '',
+      class: '',
     });
-    $("#encounter-add-collapse").removeClass('show');
+    $("#character-add-collapse").removeClass('show');
   }
 
   render() {
@@ -57,33 +58,32 @@ class View extends Component {
             type="text"
             name="name"
             className="form-control"
-            placeholder="Encounter1"
+            placeholder="Character1"
             onChange={this.handleChange}
             value={this.state.name}></input>
         </div>
         <div>
-          <label htmlFor="input-lighting">Lighting</label>
+          <label htmlFor="input-race">Race</label>
           <input
-            id="input-lighting"
+            id="input-race"
             type="text"
-            name="lighting"
+            name="race"
             className="form-control"
-            placeholder="Full"
+            placeholder="Human"
             onChange={this.handleChange}
-            value={this.state.lighting}></input>
+            value={this.state.race}></input>
         </div>
         <div>
-          <label htmlFor="input-terrain">Terrain</label>
+          <label htmlFor="input-class">Class</label>
           <input
-            id="input-terrain"
+            id="input-class"
             type="text"
-            name="terrain"
+            name="class"
             className="form-control"
-            placeholder="Open"
+            placeholder="Fighter"
             onChange={this.handleChange}
-            value={this.state.terrain}></input>
+            value={this.state.class}></input>
         </div>
-      {/*TODO PCs, NPCs, initiative */}
         <Submit
           className="btn"
           type="submit"
@@ -95,4 +95,4 @@ class View extends Component {
   }
 }
 
-export default View;
+export default Character;

@@ -31,6 +31,23 @@ class App extends Component {
         encounters: newState
       });
     })
+
+    const charactersRef = firebase.database().ref('characters');
+    charactersRef.on('value', (snapshot) => {
+      let characters = snapshot.val();
+      let newState = [];
+      for (let character in characters) {
+        newState.push({
+          id: character,
+          name: characters[character].name,
+          race: characters[character].race,
+          class: characters[character].class
+        });
+      }
+      this.setState({
+        characters: newState
+      });
+    })
   }
   render() {
     return (
@@ -49,7 +66,10 @@ class App extends Component {
             Learn React
           </a>
         </header>
-        <Menu encounters={this.state.encounters}/>
+        <Menu
+          encounters={this.state.encounters}
+          characters={this.state.characters}
+        />
       </div>
     );
   }
